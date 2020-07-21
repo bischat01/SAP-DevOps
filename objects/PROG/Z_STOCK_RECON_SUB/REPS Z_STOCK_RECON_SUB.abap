@@ -172,7 +172,7 @@ FORM sub_plant_validation .
       WHERE werks IN s_werks.
     IF sy-subrc IS NOT INITIAL.
       MESSAGE 'Invalid Plant'(019) TYPE  'S'(013) DISPLAY LIKE 'E'(014).
-      LEAVE LIST-PROCESSING.
+*LEAVE LIST-PROCESSING.
     ENDIF.
   ENDIF.
 
