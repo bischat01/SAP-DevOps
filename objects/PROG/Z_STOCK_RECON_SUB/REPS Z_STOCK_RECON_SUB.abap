@@ -9,7 +9,7 @@
 FORM sub_modify_screen .
 
   LOOP AT SCREEN.
-    IF rb_im IS NOT INITIAL.
+    IF rb_im IS NOT INITIAL."test
       IF screen-group1 = 'LGN'(005).
         screen-active = 0.
       ENDIF.
@@ -172,7 +172,7 @@ FORM sub_plant_validation .
       WHERE werks IN s_werks.
     IF sy-subrc IS NOT INITIAL.
       MESSAGE 'Invalid Plant'(019) TYPE  'S'(013) DISPLAY LIKE 'E'(014).
-*LEAVE LIST-PROCESSING.
+ LEAVE LIST-PROCESSING.
     ENDIF.
   ENDIF.
 
@@ -1387,8 +1387,9 @@ FORM sub_get_data_s4 .
        zstockmatdoc~a_return AS a_return
   FROM zstockmatdoc AS zstockmatdoc
   INTO TABLE @gt_output_a
-  WHERE zstockmatdoc~mandt = @sy-mandt
-   AND zstockmatdoc~werks IN @s_werks
+  WHERE
+*     zstockmatdoc~mandt = @sy-mandt
+    zstockmatdoc~werks IN @s_werks
    AND zstockmatdoc~lgort IN @s_lgort.
 
   ELSE.
@@ -1413,8 +1414,9 @@ FORM sub_get_data_s4 .
       zstockmatdoc~a_return AS a_return
  FROM zstockmatdoc AS zstockmatdoc
  INTO TABLE @gt_output_a
- WHERE zstockmatdoc~mandt = @sy-mandt
-  AND zstockmatdoc~werks IN @s_werks
+ WHERE
+*       zstockmatdoc~mandt = @sy-mandt
+   zstockmatdoc~werks IN @s_werks
   AND zstockmatdoc~lgort IN @s_lgort
   AND zstockmatdoc~charg EQ @space.
 
