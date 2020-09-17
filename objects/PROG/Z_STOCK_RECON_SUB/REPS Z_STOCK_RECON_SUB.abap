@@ -2809,7 +2809,7 @@ FORM file_validation .
           TRANSLATE wa_tab TO UPPER CASE.
           IF wa_tab NE 'CSV'.
             MESSAGE 'Only .csv file allowed'(m03) TYPE 'S' DISPLAY LIKE 'E'.
-            LEAVE LIST-PROCESSING.
+*           LEAVE LIST-PROCESSING.
           ENDIF.
         ENDIF.
       ENDIF.
