@@ -15,7 +15,7 @@ FORM sub_modify_screen .
       ENDIF.
     ELSE.
       IF screen-group1 = 'LGN'(005).
-        screen-required = 2.
+*       screen-required = 2.
       ENDIF.
     ENDIF.
 
