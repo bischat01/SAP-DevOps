@@ -1,6 +1,6 @@
 REPORT zdevops_sample_report_new.
 
-*Report New
+*Report
 TYPE-POOLS: slis.
 TABLES mara.
 
