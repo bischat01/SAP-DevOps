@@ -1,4 +1,4 @@
   METHOD set_text_to_x.
-*    Set TEXT
+*    text
     text = 'X'.
   ENDMETHOD.
