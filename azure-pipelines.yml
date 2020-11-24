@@ -15,7 +15,7 @@ stages:
       steps:       
       - task: CmdLine@2
         inputs:
-         script: 'SAPDevOpsUtil.exe'
+         script: 'SAPDevOpsUtil.exe ATC $(Build.ArtifactStagingDirectory)'
          workingDirectory: './DevOpsAddOnProgram/'
         
 
