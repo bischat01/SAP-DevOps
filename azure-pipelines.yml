@@ -13,14 +13,10 @@ stages:
       pool:
         name: SAPDevOps
       steps:       
-      - task: CmdLine@2 
-        name: CodeAnalysis
-        env:     
-         InputJSON: $(testJSON)
-         FilePath: $(tempDirectory)  
-        inputs:  
-         script:                                
-            'test.exe'    
-         workingDirectory: '$(Build.SourcesDirectory)/DevOpsAddOnPrograms/'
+      - task: CmdLine@2
+        inputs:
+         script: 'test.exe'
+         workingDirectory: './DevOpsAddOnProgram/'
+
 
       
