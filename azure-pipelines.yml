@@ -42,7 +42,7 @@ stages:
         inputs:
          targetType: 'inline'
          script: |
-           Write-Host "##vso[artifact.upload containerfolder=testresult;artifactname=UnitTestResults;]$(Build.ArtifactStagingDirectory)\UnitTest.html"
+           Write-Host "##vso[artifact.upload containerfolder=testresult;artifactname=ATCAnalysis;]$(Build.ArtifactStagingDirectory)\UnitTest.html"
            Write-Host "##vso[task.uploadsummary]$(Build.ArtifactStagingDirectory)\UnitTest.md"
 
 
