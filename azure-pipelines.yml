@@ -1,0 +1,49 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+stages:
+- stage: Build
+  jobs:
+    - job: Build
+      pool:
+        name: SAPDevOps
+      steps:       
+      - task: CmdLine@2
+        inputs:
+         script: 'SAPDevOpsUtil.exe ATC $(Build.ArtifactStagingDirectory)'
+         workingDirectory: './DevOpsAddOnProgram/'
+        
+
+      - task: PowerShell@2
+        inputs:
+         targetType: 'inline'
+         script: |
+           Write-Host "##vso[artifact.upload containerfolder=testresult;artifactname=ATCAnalysis;]$(Build.ArtifactStagingDirectory)\ATC.html"
+           Write-Host "##vso[task.uploadsummary]$(Build.ArtifactStagingDirectory)\ATC.md"
+
+- stage: UnitTest
+  jobs:
+    - job: UnitTest
+      pool:
+        name: SAPDevOps
+      steps:       
+      - task: CmdLine@2
+        inputs:
+         script: 'SAPDevOpsUtil.exe UnitTest $(Build.ArtifactStagingDirectory)'
+         workingDirectory: './DevOpsAddOnProgram/'
+        
+
+      - task: PowerShell@2
+        inputs:
+         targetType: 'inline'
+         script: |
+           Write-Host "##vso[artifact.upload containerfolder=testresult;artifactname=ATCAnalysis;]$(Build.ArtifactStagingDirectory)\UnitTest.html"
+           Write-Host "##vso[task.uploadsummary]$(Build.ArtifactStagingDirectory)\UnitTest.md"
+
+
+      
