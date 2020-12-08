@@ -44,6 +44,17 @@ stages:
          script: |
            Write-Host "##vso[artifact.upload containerfolder=testresult;artifactname=ATCAnalysis;]$(Build.ArtifactStagingDirectory)\UnitTest.html"
            Write-Host "##vso[task.uploadsummary]$(Build.ArtifactStagingDirectory)\UnitTest.md"
+           
+- stage: PullRequestNotification
+  jobs:
+    - job: PullRequestNotification
+      pool:
+        name: SAPDevOps
+      steps:       
+      - task: CmdLine@2
+        inputs:
+         script: 'SAPDevOpsUtil.exe PullReqNotification'
+         workingDirectory: './DevOpsAddOnProgram/'
 
 
         
