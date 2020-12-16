@@ -1,4 +1,4 @@
 # SAP-DevOps
 
-Testing pipeline for Unit Test condition
+Testing the pipeline execution for positive test condition
 
