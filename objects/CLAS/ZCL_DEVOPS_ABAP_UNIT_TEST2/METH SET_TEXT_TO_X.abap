@@ -1,4 +1,5 @@
   METHOD set_text_to_x.
-* Test
+
+* Text changed 17122020 4th
     text = 'X'.
   ENDMETHOD.
