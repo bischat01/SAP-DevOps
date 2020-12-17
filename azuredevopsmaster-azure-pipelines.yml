@@ -15,5 +15,5 @@ stages:
       steps:       
       - task: CmdLine@2
         inputs:
-         script: 'SAPDevOpsUtil.exe PullByRequest'
+         script: 'SAPDevOpsUtil.exe PullByRequest $(Build.SourcesDirectory)'
          workingDirectory: './DevOpsAddOnProgram/'
