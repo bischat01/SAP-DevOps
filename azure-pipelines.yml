@@ -4,48 +4,10 @@
 # https://aka.ms/yaml
 
 trigger:
-- Dev
+- master
 
 stages:
-- stage: Build
-  jobs:
-    - job: Build
-      pool:
-        name: SAPDevOps
-      steps:       
-      - task: CmdLine@2
-        inputs:
-         script: 'SAPDevOpsUtil.exe ATC $(Build.ArtifactStagingDirectory)'
-         workingDirectory: './DevOpsAddOnProgram/'
-        
-
-      - task: PowerShell@2
-        inputs:
-         targetType: 'inline'
-         script: |
-           Write-Host "##vso[artifact.upload containerfolder=testresult;artifactname=ATCAnalysis;]$(Build.ArtifactStagingDirectory)\ATC.html"
-           Write-Host "##vso[task.uploadsummary]$(Build.ArtifactStagingDirectory)\ATC.md"
-
-- stage: UnitTest
-  jobs:
-    - job: UnitTest
-      pool:
-        name: SAPDevOps
-      steps:       
-      - task: CmdLine@2
-        inputs:
-         script: 'SAPDevOpsUtil.exe UnitTest $(Build.ArtifactStagingDirectory)'
-         workingDirectory: './DevOpsAddOnProgram/'
-        
-
-      - task: PowerShell@2
-        inputs:
-         targetType: 'inline'
-         script: |
-           Write-Host "##vso[artifact.upload containerfolder=testresult;artifactname=ATCAnalysis;]$(Build.ArtifactStagingDirectory)\UnitTest.html"
-           Write-Host "##vso[task.uploadsummary]$(Build.ArtifactStagingDirectory)\UnitTest.md"
-
-- stage: PullRequestNotification
+- stage: PullByRequest
   jobs:
     - job: PullRequestNotification
       pool:
@@ -53,7 +15,7 @@ stages:
       steps:       
       - task: CmdLine@2
         inputs:
-         script: 'SAPDevOpsUtil.exe PullReqNotification'
+         script: 'SAPDevOpsUtil.exe PullByRequest'
          workingDirectory: './DevOpsAddOnProgram/'
         
 
