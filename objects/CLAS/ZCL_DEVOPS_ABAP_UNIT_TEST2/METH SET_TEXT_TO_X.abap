@@ -1,6 +1,5 @@
   METHOD set_text_to_x.
 
-* Text changed 22122020
-*    text = 'X'.
+* Comment Changed on 22122020
  text = 'X'.
   ENDMETHOD.
