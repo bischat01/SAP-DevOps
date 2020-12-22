@@ -119,7 +119,7 @@ FORM get_data  USING xu_matnr TYPE ranges_matnr
     WHERE mara~matnr IN xu_matnr
     AND makt~spras EQ 'D'.
 
-  DELETE ADJACENT DUPLICATES FROM xc_mara COMPARING matnr.
+*  DELETE ADJACENT DUPLICATES FROM xc_mara COMPARING matnr.
 
   SELECT ebeln
          ebelp
