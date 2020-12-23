@@ -1,4 +1,4 @@
 # SAP-DevOps
 
-Testing the pipeline execution for positive test condition
+Testing the pull request merge pipeline trigger.
 
