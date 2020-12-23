@@ -29,4 +29,8 @@ stages:
          workingDirectory: './DevOpsAddOnProgram/'
          script: |
            Write-Host "##vso[artifact.upload containerfolder=executable;artifactname=exe;]$(Build.SourcesDirectory)\DevOpsAddOnProgram\SAPDevOpsUtil.exe"
+           Write-Host "##vso[artifact.upload containerfolder=executable;artifactname=exe;]$(Build.SourcesDirectory)\DevOpsAddOnProgram\SAPDevOpsUtil.dll"
+           Write-Host "##vso[artifact.upload containerfolder=executable;artifactname=exe;]$(Build.SourcesDirectory)\DevOpsAddOnProgram\SAPDevOpsUtil.dll.config"
+           Write-Host "##vso[artifact.upload containerfolder=executable;artifactname=exe;]$(Build.SourcesDirectory)\DevOpsAddOnProgram\SAPDevOpsUtil.pdb"
+           Write-Host "##vso[artifact.upload containerfolder=executable;artifactname=exe;]$(Build.SourcesDirectory)\DevOpsAddOnProgram\SAPDevOpsUtil.runtimeconfig.json"
            
