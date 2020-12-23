@@ -6,6 +6,11 @@
 trigger:
 - master
 
+pr:
+  branches:
+    exclude:
+    - '*'
+
 stages:
 - stage: PullByRequest
   jobs:
