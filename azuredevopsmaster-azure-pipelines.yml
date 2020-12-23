@@ -15,5 +15,5 @@ stages:
       steps:       
       - task: CmdLine@2
         inputs:
-         script: 'SAPDevOpsUtil.exe PullByRequest $(Build.SourcesDirectory)'
+         script: 'echo Master branch got committed.'
          workingDirectory: './DevOpsAddOnProgram/'
