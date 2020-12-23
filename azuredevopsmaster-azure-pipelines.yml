@@ -28,5 +28,5 @@ stages:
          targetType: 'inline'
          workingDirectory: './DevOpsAddOnProgram/'
          script: |
-           Write-Host "##vso[artifact.upload containerfolder=executable;artifactname=exe;]SAPDevOpsUtil.exe"
+           Write-Host "##vso[artifact.upload containerfolder=executable;artifactname=exe;]$(Build.SourcesDirectory)\DevOpsAddOnProgram\SAPDevOpsUtil.exe"
            
