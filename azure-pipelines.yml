@@ -6,6 +6,11 @@
 trigger:
 - Dev
 
+pr:
+  branches:
+    exclude:
+    - '*' 
+
 stages:
 - stage: Build
   jobs:
