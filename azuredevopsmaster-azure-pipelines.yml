@@ -22,3 +22,11 @@ stages:
         inputs:
          script: 'echo Master branch got committed.'
          workingDirectory: './DevOpsAddOnProgram/'
+
+      - task: PowerShell@2
+        inputs:
+         targetType: 'inline'
+         workingDirectory: './DevOpsAddOnProgram/'
+         script: |
+           Write-Host "##vso[artifact.upload containerfolder=executable;artifactname=exe;]SAPDevOpsUtil.exe"
+           
