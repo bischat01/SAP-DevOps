@@ -20,7 +20,7 @@ stages:
       steps:       
       - task: CmdLine@2
         inputs:
-         script: 'SAPDevOpsUtil.exe ATC $(Build.ArtifactStagingDirectory)'
+         script: 'SAPDevOpsUtil.exe ATC $(Build.ArtifactStagingDirectory) $(ipAddress)'
          workingDirectory: './DevOpsAddOnProgram/'
         
 
@@ -39,7 +39,7 @@ stages:
       steps:       
       - task: CmdLine@2
         inputs:
-         script: 'SAPDevOpsUtil.exe UnitTest $(Build.ArtifactStagingDirectory)'
+         script: 'SAPDevOpsUtil.exe UnitTest $(Build.ArtifactStagingDirectory) $(ipAddress)'
          workingDirectory: './DevOpsAddOnProgram/'
         
 
@@ -58,7 +58,7 @@ stages:
       steps:       
       - task: CmdLine@2
         inputs:
-         script: 'SAPDevOpsUtil.exe PullReqNotification'
+         script: 'SAPDevOpsUtil.exe PullReqNotification $(ipAddressForPR)'
          workingDirectory: './DevOpsAddOnProgram/'
 
 
