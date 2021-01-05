@@ -58,7 +58,7 @@ stages:
       steps:       
       - task: CmdLine@2
         inputs:
-         script: 'SAPDevOpsUtil.exe PullReqNotification $(ipAddressForPR)'
+         script: 'SAPDevOpsUtil.exe PullReqNotification'
          workingDirectory: './DevOpsAddOnProgram/'
 
 
