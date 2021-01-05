@@ -33,4 +33,5 @@ stages:
            Write-Host "##vso[artifact.upload containerfolder=executable;artifactname=exe;]$(Build.SourcesDirectory)\DevOpsAddOnProgram\SAPDevOpsUtil.dll.config"
            Write-Host "##vso[artifact.upload containerfolder=executable;artifactname=exe;]$(Build.SourcesDirectory)\DevOpsAddOnProgram\SAPDevOpsUtil.pdb"
            Write-Host "##vso[artifact.upload containerfolder=executable;artifactname=exe;]$(Build.SourcesDirectory)\DevOpsAddOnProgram\SAPDevOpsUtil.runtimeconfig.json"
+           Write-Host "##vso[artifact.upload containerfolder=executable;artifactname=exe;]$(Build.SourcesDirectory)\DevOpsAddOnProgram\System.Configuration.ConfigurationManager.dll"
            
