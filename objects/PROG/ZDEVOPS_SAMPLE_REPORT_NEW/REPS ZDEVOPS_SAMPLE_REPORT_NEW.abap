@@ -1,7 +1,7 @@
 REPORT zdevops_sample_report_new.
 
 * Report
-* Text changed 07012021
+* 08012021
 TYPE-POOLS: slis.
 TABLES mara.
 
