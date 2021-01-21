@@ -12,6 +12,43 @@ pr:
     - '*'
 
 stages:
+- stage: CodeAnalysis
+  jobs:
+    - job: CodeAnalysis
+      pool:
+        name: SAPDevOps
+      steps:       
+      - task: CmdLine@2
+        inputs:
+         script: 'SAPDevOpsUtil.exe ATC $(Build.ArtifactStagingDirectory) $(ipAddress)'
+         workingDirectory: './DevOpsAddOnProgram/'
+      
+      - task: PowerShell@2
+        inputs:
+         targetType: 'inline'
+         script: |
+           Write-Host "##vso[artifact.upload containerfolder=testresult;artifactname=ATCAnalysis;]$(Build.ArtifactStagingDirectory)\ATC.html"
+           Write-Host "##vso[task.uploadsummary]$(Build.ArtifactStagingDirectory)\ATC.md"
+
+- stage: UnitTest
+  jobs:
+    - job: UnitTest
+      pool:
+        name: SAPDevOps
+      steps:       
+      - task: CmdLine@2
+        inputs:
+         script: 'SAPDevOpsUtil.exe UnitTest $(Build.ArtifactStagingDirectory) $(ipAddress)'
+         workingDirectory: './DevOpsAddOnProgram/'
+        
+
+      - task: PowerShell@2
+        inputs:
+         targetType: 'inline'
+         script: |
+           Write-Host "##vso[artifact.upload containerfolder=testresult;artifactname=ATCAnalysis;]$(Build.ArtifactStagingDirectory)\UnitTest.html"
+           Write-Host "##vso[task.uploadsummary]$(Build.ArtifactStagingDirectory)\UnitTest.md"
+
 - stage: PullByRequest
   jobs:
     - job: PullRequestNotification
