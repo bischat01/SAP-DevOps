@@ -58,14 +58,14 @@ CLASS lcl_test IMPLEMENTATION.
 
     ls_matnr-sign = 'I'.
     ls_matnr-option = 'EQ'.
-    ls_matnr-low = 'CH-6200'.
+    ls_matnr-low = '000000000010000000'."'CH-6200'.
     APPEND ls_matnr TO lr_matnr.
 
 
     PERFORM get_data USING   lr_matnr
                      CHANGING lt_mara.
 
-    READ TABLE lt_mara INTO DATA(ls_mara) WITH KEY matnr = 'CH-6200'.
+    READ TABLE lt_mara INTO DATA(ls_mara) WITH KEY matnr = '000000000010000000'.
 
     cl_aunit_assert=>assert_equals( act = ls_mara-spras exp = 'E'
      msg = 'Material Description is not in English').
@@ -130,7 +130,8 @@ FORM get_data  USING xu_matnr TYPE ranges_matnr
      FROM mara INNER JOIN makt
      ON mara~matnr EQ makt~matnr
     WHERE mara~matnr IN xu_matnr
-    AND makt~spras EQ 'D'
+*    AND makt~spras EQ 'D'
+     AND makt~spras EQ 'E'
     ORDER BY mara~matnr.
 
   SELECT ebeln
