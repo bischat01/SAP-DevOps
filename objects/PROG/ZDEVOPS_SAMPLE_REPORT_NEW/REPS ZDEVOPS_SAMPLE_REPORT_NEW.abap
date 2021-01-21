@@ -106,8 +106,7 @@ FORM get_data  USING xu_matnr TYPE ranges_matnr
          END OF lty_ekpo.
   DATA: lt_ekpo TYPE TABLE OF lty_ekpo.
 
-
-  SELECT  DISTINCT mara~matnr
+  SELECT  mara~matnr
           mara~mtart
           mara~mbrsh
           mara~meins
@@ -117,8 +116,22 @@ FORM get_data  USING xu_matnr TYPE ranges_matnr
      FROM mara INNER JOIN makt
      ON mara~matnr EQ makt~matnr
     WHERE mara~matnr IN xu_matnr
-    AND makt~spras EQ 'D'
-    ORDER BY mara~matnr.
+    AND makt~spras EQ 'D'.
+
+  DELETE ADJACENT DUPLICATES FROM xc_mara COMPARING matnr.
+
+*  SELECT  DISTINCT mara~matnr
+*          mara~mtart
+*          mara~mbrsh
+*          mara~meins
+*          makt~maktx
+*          makt~spras
+*     INTO TABLE xc_mara
+*     FROM mara INNER JOIN makt
+*     ON mara~matnr EQ makt~matnr
+*    WHERE mara~matnr IN xu_matnr
+*    AND makt~spras EQ 'D'
+*    ORDER BY mara~matnr.
 
   SELECT ebeln
          ebelp
