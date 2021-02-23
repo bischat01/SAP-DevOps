@@ -1,5 +1,6 @@
   METHOD set_text_to_x.
 
-* Changed on 08012021
+DATA: lv_var TYPE i.
+
  text = 'X'.
   ENDMETHOD.
